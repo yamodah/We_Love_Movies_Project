@@ -4,7 +4,7 @@ exports.up = function (knex) {
     table.string("preferred_name");
     table.string("surname");
     table.string("oragnization_name");
-    table.timestamps([useTimestamps], [defaultToNow]);
+    table.timestamps(true,true);
   });
 };
 
