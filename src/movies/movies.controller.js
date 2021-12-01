@@ -4,18 +4,19 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary")
 //ID VALIDATION
 async function movieExists(req,res,next) {
     const {movieId} = req.params
-    const {data} =  await service.list()
-    const foundMovie = data.find((movie)=>movie.movie_id == movieId)
+    // console.log("pizza, pizza")
+    // console.log(await service.read(movieId))
+    const foundMovie = await service.read(movieId)
+
     if(foundMovie){
         res.locals.movie = foundMovie
-        return next
+        return next()
     }
     next({
         signal:404,
         message: "Movie cannot be found"
     })
 }
-
 async function list(req,res,next){
     const {is_showing} = req.query
     if(is_showing){
@@ -28,10 +29,11 @@ async function list(req,res,next){
 
 }
  async function read(req,res,next){
+     console.log(res.locals.movie)
     res.json({data: await service.read(res.locals.movie.movie_id)})
 }
 
 module.exports = {
     list:[asyncErrorBoundary(list)],
-    read:[asyncErrorBoundary(movieExists), read]
+    read:[asyncErrorBoundary(movieExists), asyncErrorBoundary(read)]
 }

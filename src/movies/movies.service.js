@@ -13,7 +13,14 @@ const listMoviesInTheaters = ()=>{
 const read = (movieId)=>{
    return knex("movies")
     .select("*")
-    .where({id:movieId})
+    .where({movie_id:movieId})
+    .first()
+}
+
+const listMatchingTheaters = (movieId)=>{
+    return knex("theaters as t")
+        .join("movies_theaters as mt", "t.theater_id", "mt.theater_id")
+        .join("")
 }
 module.exports = {
     list,
