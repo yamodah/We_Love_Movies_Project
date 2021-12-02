@@ -25,7 +25,7 @@ const listMatchingTheaters = (movieId)=>{
         .where({"mt.movie_id":movieId})
 }
 const addCritic = mapProperties({
-    // "critic_id":"critic.critic_id",
+    "critic_id":"critic.critic_id",
     "preferred_name":"critic.preferred_name",
     "surname":"critic.surname",
     "organization_name":"critic.organization_name",
