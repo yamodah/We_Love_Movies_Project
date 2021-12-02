@@ -7,6 +7,10 @@ router
     .all(methodNotAllowed)
 
 router
+    .route("/:movieId/reviews")
+    .get(controller.findReviews)
+    .all(methodNotAllowed)
+router
     .route("/:movieId")
     .get(controller.read)
     .all(methodNotAllowed);
