@@ -8,7 +8,7 @@ const listMoviesInTheaters = ()=>{
     .join("movies_theaters as mt", "mt.movie_id", "m.movie_id")
     .distinct("m.*")
     .where({"mt.is_showing":true})
-    .orderBy("mt.movie_id")
+    .orderBy("m.movie_id")
 }
 
 const read = (movieId)=>{
