@@ -5,9 +5,6 @@ const cors = require("cors")
 
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({
-    extended: true
-}))
 
 const moviesRouter= require("./movies/movies.router")
 const theatersRouter = require("./theaters/theaters.router")

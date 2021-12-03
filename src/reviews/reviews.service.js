@@ -14,19 +14,19 @@ const destroy = (review_id)=>{
 const update = (updatedReview)=>{
     return knex("reviews")
         .select("*")
-        .where({review_id:"updatedReview.review_id"})
+        .where({review_id:updatedReview.review_id})
         .update(updatedReview)
 }
 const addCritic = mapProperties({
-    "critic_id":"critic.critic_id",
+    // "critic_id":"critic.critic_id",
     "preferred_name":"critic.preferred_name",
     "surname":"critic.surname",
     "organization_name":"critic.organization_name",
     // "created_at":"critic.created_at",
-    "updated_at":"critic.updated_at",
-    "review_id":"critic.review_id",
-    "score":"critic.score",
-    "movie_id":"critic.movie_id"
+    // "updated_at":"critic.updated_at",
+    // "review_id":"critic.review_id",
+    // "score":"critic.score",
+    // "movie_id":"critic.movie_id"
 })
 const reformatReview = (reviewId)=>{
     return knex("reviews as r")
